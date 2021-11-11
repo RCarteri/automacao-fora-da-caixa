@@ -1,6 +1,5 @@
 @tag
-Feature: Title of your feature
-  I want to use this template for my feature file
+Feature: Cadastro de clientes
 
 	@tag1
   Scenario: Inserir cliente pessoa fisica

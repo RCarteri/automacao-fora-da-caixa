@@ -4,6 +4,9 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pages.ClientePage;
+import pages.LoginPage;
+import pages.MenusPage;
 
 public class ClienteSteps {
 	@Given("efetuei login no sistema")

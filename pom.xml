@@ -11,12 +11,15 @@
 			<artifactId>cucumber-java</artifactId>
 			<version>1.2.6</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+
 		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>1.2.6</version>
-			<!-- <type>pom</type>  "essa linha não pode ter senão da erro no import do junit.Cucumber no ClienteTest.java"-->
+			<!-- <type>pom</type> "essa linha não pode ter senão da erro no import 
+				do junit.Cucumber no ClienteTest.java" -->
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -24,6 +27,12 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>3.0.3</version>
 		</dependency>
 
 	</dependencies>

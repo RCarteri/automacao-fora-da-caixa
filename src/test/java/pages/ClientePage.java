@@ -1,7 +1,10 @@
-package foradacaixa;
+package pages;
 
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import foradacaixa.TestRule;
+import foradacaixa.elementMap.ClienteElementMap;
 
 public class ClientePage extends ClienteElementMap{
 	public ClientePage() {

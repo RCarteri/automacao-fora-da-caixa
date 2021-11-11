@@ -1,4 +1,4 @@
-package foradacaixa;
+package foradacaixa.elementMap;
 
 import org.openqa.selenium.WebElement;
 
