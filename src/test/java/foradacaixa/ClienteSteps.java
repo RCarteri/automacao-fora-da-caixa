@@ -25,6 +25,7 @@ public class ClienteSteps {
 	public void informarDadosIdentificacaoPF() {
 		ClientePage clientePage = new ClientePage();
 		clientePage.InformarDadosIdentificacaoPF();
+		Utils.logPrint("Dados de Identificacao");
 	}
 
 	@And("na tela Dados de Identificacao clico em Avancar")
@@ -37,12 +38,14 @@ public class ClienteSteps {
 	public void informarEnderecos() {
 		ClientePage clientePage = new ClientePage ();
 		clientePage.informaEnderecos();
+		Utils.logPrint("Enderecos");
 	}
 
 	@And("na tela Enderecos clico em Salvar")
 	public void clicarSalvar() {
 		ClientePage clientePage = new ClientePage ();
 		clientePage.clicarSalvar();
+		Utils.logPrint("Cliente Cadastrado");
 	}
 
 	@Then("na tela Enderecos sera exibida mensagem de sucesso")

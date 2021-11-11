@@ -25,7 +25,7 @@ public class TestRule {
     public void beforeCenario(Scenario cenario) {
     	if (extentReport == null) {
 			extentReport = new ExtentReports();
-			htmlReporter = new ExtentHtmlReporter("src/test/resources/htmlReporter.html");
+			htmlReporter = new ExtentHtmlReporter("src/test/resources/report/htmlReporter.html");
 			extentReport.attachReporter(htmlReporter);
 		}
 		extentTest = extentReport.createTest(cenario.getId());
@@ -33,7 +33,7 @@ public class TestRule {
 		ChromeOptions options = new ChromeOptions();
         options.addArguments("user-data-dir=C:/Users/ruehlein/AppData/Local/Google/Chrome/User Data");
 		driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
         driver.manage().window().maximize();
 		driver.navigate().to("file:///C:/Users/ruehlein/eclipse-workspace/foradacaixa/src/test/resources/site/index.html");
 		
@@ -56,6 +56,9 @@ public class TestRule {
 
     public static WebDriver getDriver() {
         return driver;
+    }
+    public static ExtentTest getExtentTest() {
+        return extentTest;
     }
 }
 /*Como esse sistema de treinamento utiliza uma base de dados Web SQL Database criada no Chrome, 
