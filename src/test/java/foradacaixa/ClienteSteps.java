@@ -8,23 +8,25 @@ import cucumber.api.java.en.When;
 public class ClienteSteps {
 	@Given("efetuei login no sistema")
 	public void efetuarLogin() {
-		
+		LoginPage loginPage = new LoginPage();
+		loginPage.efetuarLogin();
 	}
 
 	@And("acessei o menu Clientes >> Inserir")
 	public void acessarMenuClientesInserir() {
-
+		MenusPage menusPage = new MenusPage();
+	    menusPage.acessarMenuClientesInserir();
 	}
 
 	@When("na tela Dados de Identificacao informo os dados de Pessoa Fisica")
 	public void informarDadosIdentificacaoPF() {
-		ClientePage clientePage = new ClientePage ();
+		ClientePage clientePage = new ClientePage();
 		clientePage.InformarDadosIdentificacaoPF();
 	}
 
 	@And("na tela Dados de Identificacao clico em Avancar")
 	public void clicarAvancar() {
-		ClientePage clientePage = new ClientePage ();
+		ClientePage clientePage = new ClientePage();
 		clientePage.clicarAvancar();
 	}
 
