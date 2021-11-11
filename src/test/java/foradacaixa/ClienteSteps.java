@@ -1,5 +1,7 @@
 package foradacaixa;
 
+import org.junit.Assert;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -18,7 +20,7 @@ public class ClienteSteps {
 	@And("acessei o menu Clientes >> Inserir")
 	public void acessarMenuClientesInserir() {
 		MenusPage menusPage = new MenusPage();
-	    menusPage.acessarMenuClientesInserir();
+		menusPage.acessarMenuClientesInserir();
 	}
 
 	@When("na tela Dados de Identificacao informo os dados de Pessoa Fisica")
@@ -36,26 +38,27 @@ public class ClienteSteps {
 
 	@And("na tela Enderecos informo os enderecos")
 	public void informarEnderecos() {
-		ClientePage clientePage = new ClientePage ();
+		ClientePage clientePage = new ClientePage();
 		clientePage.informaEnderecos();
 		Utils.logPrint("Enderecos");
 	}
 
 	@And("na tela Enderecos clico em Salvar")
 	public void clicarSalvar() {
-		ClientePage clientePage = new ClientePage ();
+		ClientePage clientePage = new ClientePage();
 		clientePage.clicarSalvar();
 		Utils.logPrint("Cliente Cadastrado");
 	}
 
 	@Then("na tela Enderecos sera exibida mensagem de sucesso")
 	public void verificarMensagemSucesso() {
-		ClientePage clientePage = new ClientePage ();
-		clientePage.verificarMensagemSucesso();
-	}
-
-	@And("efetuarei logout do sistema")
-	public void efetuarLogout() {
-
+		ClientePage clientePage = new ClientePage();
+		boolean blnExibiuMensagemSucesso = clientePage.verificarMensagemSucesso();
+		if (blnExibiuMensagemSucesso) {
+			Utils.logPass("Cliente cadastrado com sucesso");
+		} else {
+			Utils.logFail("Erro ao cadastrar o cliente");
+		}
+		Assert.assertTrue("Não exibiu a mensagem de sucesso", blnExibiuMensagemSucesso);
 	}
 }

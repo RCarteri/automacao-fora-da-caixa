@@ -6,11 +6,11 @@ import org.openqa.selenium.support.ui.Select;
 import foradacaixa.TestRule;
 import foradacaixa.elementMap.ClienteElementMap;
 
-public class ClientePage extends ClienteElementMap{
+public class ClientePage extends ClienteElementMap {
 	public ClientePage() {
 		PageFactory.initElements(TestRule.getDriver(), this);
 	}
-	
+
 	public void InformarDadosIdentificacaoPF() {
 		fisica.click();
 		cpf_cnpj.sendKeys("404.357.110-08");
@@ -44,7 +44,7 @@ public class ClientePage extends ClienteElementMap{
 		endp_telefone.sendKeys("54999510456");
 		endp_celular.sendKeys("54999510456");
 
-		// Endereco Cobrança
+		// Endereco Cobranï¿½a
 
 		endc_cep.sendKeys("38400762");
 		endc_endereco.sendKeys("Rua Bralia");
@@ -63,9 +63,13 @@ public class ClientePage extends ClienteElementMap{
 
 	}
 
-	public void verificarMensagemSucesso() {
-		// TODO Auto-generated method stub
-
+	public boolean verificarMensagemSucesso() {
+		String strMensagemExibida = mensagem.getText();
+		if (strMensagemExibida.contains("Cliente cadastrado com sucesso")){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }
