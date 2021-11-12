@@ -20,9 +20,9 @@ A automação realiza o login no sistema e cadastra usuários PF e PJ validando 
 
 A seguir um vídeo mostrando o sistema em funcionamento:
 
-![video][video]
 
-[video]: automacao.mp4
+![video](automacao.gif)
+
 [dirChromedriver]: src/test/resources/chromedriver
 [chromedriver]: https://chromedriver.chromium.org/downloads
 [intelliJ]: https://www.jetbrains.com/pt-br/idea/download/#section=windows
