@@ -1,5 +1,9 @@
 package foradacaixa.pages;
 
+import java.util.Locale;
+
+import com.github.javafaker.Faker;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -13,8 +17,8 @@ public class ClientePage extends ClienteElementMap {
 		PageFactory.initElements(TestRule.getDriver(), this);
 	}
 
-	public void InformarDadosIdentificacaoPF(String strNome, String strEmail, String strDataNascimento, String strSexo,
-			String strEstadoCivil) {
+	public void InformarDadosIdentificacaoPF(
+			String strNome, String strEmail, String strDataNascimento, String strSexo, String strEstadoCivil) {
 		fisica.click();
 		cpf_cnpj.sendKeys(Utils.gerarCPF());
 		nome_razaosocial.sendKeys(strNome);
@@ -33,27 +37,29 @@ public class ClientePage extends ClienteElementMap {
 	}
 
 	public void informaEnderecos() {
+		Faker faker = new Faker(new Locale("pt-BR"));
+		String phone = faker.phoneNumber().cellPhone().replaceAll("[ |(|)|-]", "");
 		// Endereco Principal
-		endp_cep.sendKeys("38400762");
-		endp_endereco.sendKeys("Rua Brasia");
-		endp_numero.sendKeys("355");
-		endp_complemento.sendKeys("bl 26");
-		endp_cidade.sendKeys("Uberlandia");
+		endp_cep.sendKeys(faker.address().zipCode().replace("-", ""));
+		endp_endereco.sendKeys(faker.address().firstName());
+		endp_numero.sendKeys(faker.number().digits(3));
+		endp_complemento.sendKeys(faker.address().lastName());
+		endp_cidade.sendKeys(faker.address().cityName());
 		Select cmbEstadoEndPrincipal = new Select(endp_estado);
 		cmbEstadoEndPrincipal.selectByVisibleText("RS");
-		endp_telefone.sendKeys("54999510456");
-		endp_celular.sendKeys("54999510456");
+		endp_telefone.sendKeys(phone);
+		endp_celular.sendKeys(phone);
 
 		// Endereco Cobrança
-		endc_cep.sendKeys("38400762");
-		endc_endereco.sendKeys("Rua Bralia");
-		endc_numero.sendKeys("355");
-		endc_complemento.sendKeys("bl 26");
-		endc_cidade.sendKeys("Uberlandia");
+		endc_cep.sendKeys(faker.address().zipCode());
+		endc_endereco.sendKeys(faker.address().firstName());
+		endc_numero.sendKeys(faker.number().digits(100));
+		endc_complemento.sendKeys(faker.address().lastName());
+		endc_cidade.sendKeys(faker.address().cityName());
 		Select cmbEstadoEndCobranca = new Select(endc_estado);
 		cmbEstadoEndCobranca.selectByVisibleText("RS");
-		endc_telefone.sendKeys("54999510456");
-		endc_celular.sendKeys("54999510456");
+		endc_telefone.sendKeys(phone);
+		endc_celular.sendKeys(phone);
 	}
 
 	public void clicarSalvar() {

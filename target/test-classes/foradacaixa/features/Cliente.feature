@@ -14,7 +14,7 @@ Feature: Cadastro de clientes
         Examples:
             | nome                    | email               | data_nascimento | sexo      | estado_civil |
             | Automação fora da caixa | automacao@teste.com | 02/07/1990      | Masculino | Solteiro     |
-            | Automação               | autao@teste.com     | 09/07/1978      | Feminino  | Solteiro     |
+            # | Automação               | autao@teste.com     | 09/07/1978      | Feminino  | Solteiro     |
 
     @pj @regression
     Scenario Outline: Inserir cliente Pessoa Juridica

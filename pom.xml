@@ -32,7 +32,11 @@
 			<artifactId>extentreports</artifactId>
 			<version>3.0.3</version> <!-- Precisou ser essa versão e nao a mais atual -->
 		</dependency>
-
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>

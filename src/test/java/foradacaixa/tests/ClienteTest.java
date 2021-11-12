@@ -6,5 +6,5 @@ import cucumber.api.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/java/foradacaixa/features/Cliente.feature",
-glue = { "" }, monochrome = true, dryRun = false, tags = {"@all"})
+glue = { "" }, monochrome = true, dryRun = false, tags = {"@pf"})
 public class  ClienteTest {}

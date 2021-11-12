@@ -7,62 +7,52 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import foradacaixa.commons.Utils;
-import foradacaixa.pages.ClientePage;
-import foradacaixa.pages.LoginPage;
-import foradacaixa.pages.MenusPage;
+import foradacaixa.pages.WebPages;
 
 public class ClienteSteps {
 	@Given("efetuei login no sistema com (.*) e (.*)")
 	public void efetuarLogin(String strUsuario, String strSenha) {
-		LoginPage loginPage = new LoginPage();
-		loginPage.efetuarLogin(strUsuario, strSenha);
+		WebPages.pageLogin().efetuarLogin(strUsuario, strSenha);
 	}
 
 	@And("acessei o menu Clientes >> Inserir")
 	public void acessarMenuClientesInserir() {
-		MenusPage menusPage = new MenusPage();
-		menusPage.acessarMenuClientesInserir();
+		WebPages.pageMenus().acessarMenuClientesInserir();
 	}
 
 	@When("na tela Dados de Identificacao informo os dados de Pessoa Fisica: (.*), (.*), (.*), (.*) e (.*)")
 	public void informarDadosIdentificacaoPF(String strNome, String strEmail, String strDataNascimento, String strSexo,
 			String strEstadoCivil) {
-		ClientePage clientePage = new ClientePage();
-		clientePage.InformarDadosIdentificacaoPF(strNome, strEmail, strDataNascimento, strSexo, strEstadoCivil);
+		WebPages.pageCliente().InformarDadosIdentificacaoPF(strNome, strEmail, strDataNascimento, strSexo, strEstadoCivil);
 		Utils.logPrint("Dados de Identificacao");
 	}
 
 	@When("na tela Dados de Identificacao informo os dados de Pessoa Juridica: (.*) e (.*)")
 	public void informarDadosIdentificacaoPF(String strRazaoSocial, String strEmail) {
-		ClientePage clientePage = new ClientePage();
-		clientePage.informarDadosIdentificacaoPJ(strRazaoSocial, strEmail);
+		WebPages.pageCliente().informarDadosIdentificacaoPJ(strRazaoSocial, strEmail);
 		Utils.logPrint("Dados de Identificacao PJ");
 	}
 
 	@And("na tela Dados de Identificacao clico em Avancar")
 	public void clicarAvancar() {
-		ClientePage clientePage = new ClientePage();
-		clientePage.clicarAvancar();
+		WebPages.pageCliente().clicarAvancar();
 	}
 
 	@And("na tela Enderecos informo os enderecos")
 	public void informarEnderecos() {
-		ClientePage clientePage = new ClientePage();
-		clientePage.informaEnderecos();
+		WebPages.pageCliente().informaEnderecos();
 		Utils.logPrint("Enderecos");
 	}
 
 	@And("na tela Enderecos clico em Salvar")
 	public void clicarSalvar() {
-		ClientePage clientePage = new ClientePage();
-		clientePage.clicarSalvar();
+		WebPages.pageCliente().clicarSalvar();
 		Utils.logPrint("Cliente Cadastrado");
 	}
 
 	@Then ("a tela de Dados de Identificação deve ser exibida na tela")
 	public void verificarExibicaoTelaDadosIdentificacao(){
-		ClientePage clientePage = new ClientePage();
-		boolean blnExibiuMensagemSucesso = clientePage.verificarExibicaoTelaDadosIdentificacao();
+		boolean blnExibiuMensagemSucesso = WebPages.pageCliente().verificarExibicaoTelaDadosIdentificacao();
 		if (blnExibiuMensagemSucesso){
 			Utils.logPass("Tela Dados de Identificacao exibida com sucesso");
 		}else {
@@ -73,8 +63,7 @@ public class ClienteSteps {
 	
 	@Then("na tela Enderecos sera exibida mensagem de sucesso")
 	public void verificarMensagemSucesso() {
-		ClientePage clientePage = new ClientePage();
-		boolean blnExibiuMensagemSucesso = clientePage.verificarMensagemSucesso();
+		boolean blnExibiuMensagemSucesso = WebPages.pageCliente().verificarMensagemSucesso();
 		if (blnExibiuMensagemSucesso) {
 			Utils.logPass("Cliente cadastrado com sucesso");
 		} else {
