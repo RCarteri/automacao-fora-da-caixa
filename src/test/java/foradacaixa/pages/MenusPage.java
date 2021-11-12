@@ -1,8 +1,8 @@
-package pages;
+package foradacaixa.pages;
 
 import org.openqa.selenium.support.PageFactory;
 
-import foradacaixa.TestRule;
+import foradacaixa.commons.TestRule;
 import foradacaixa.elementMap.MenusElementMap;
 
 public class MenusPage extends MenusElementMap{

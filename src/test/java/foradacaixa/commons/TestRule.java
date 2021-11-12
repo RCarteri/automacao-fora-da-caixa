@@ -1,4 +1,4 @@
-package foradacaixa;
+package foradacaixa.commons;
 
 import java.time.Duration;
 

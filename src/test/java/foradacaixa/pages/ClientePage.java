@@ -1,10 +1,11 @@
-package pages;
+package foradacaixa.pages;
 
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import foradacaixa.TestRule;
+import foradacaixa.commons.TestRule;
 import foradacaixa.elementMap.ClienteElementMap;
+import foradacaixa.commons.Utils;
 
 public class ClientePage extends ClienteElementMap {
 	public ClientePage() {
@@ -14,7 +15,7 @@ public class ClientePage extends ClienteElementMap {
 	public void InformarDadosIdentificacaoPF(String strNome, String strEmail, String strDataNascimento, String strSexo,
 			String strEstadoCivil) {
 		fisica.click();
-		cpf_cnpj.sendKeys("404.357.110-08");
+		cpf_cnpj.sendKeys(Utils.gerarCPF());
 		nome_razaosocial.sendKeys(strNome);
 		email.sendKeys(strEmail);
 		data_nascimento.sendKeys(strDataNascimento);
@@ -45,7 +46,7 @@ public class ClientePage extends ClienteElementMap {
 		endp_telefone.sendKeys("54999510456");
 		endp_celular.sendKeys("54999510456");
 
-		// Endereco Cobran�a
+		// Endereco Cobrança
 
 		endc_cep.sendKeys("38400762");
 		endc_endereco.sendKeys("Rua Bralia");
