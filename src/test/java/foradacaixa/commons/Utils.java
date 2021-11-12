@@ -40,7 +40,7 @@ public class Utils {
 		File scrFile = ((TakesScreenshot) TestRule.getDriver()).getScreenshotAs(OutputType.FILE);
 		try {
 			FileUtils.copyFile(scrFile, new File(
-					"C:/Users/ruehlein/eclipse-workspace/foradacaixa/src/test/resources/report/" + strLog + ".png"));
+				System.getProperty("user.dir") + "/src/test/resources/report/" + strLog + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
