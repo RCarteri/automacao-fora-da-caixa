@@ -11,10 +11,10 @@ import pages.LoginPage;
 import pages.MenusPage;
 
 public class ClienteSteps {
-	@Given("efetuei login no sistema")
-	public void efetuarLogin() {
+	@Given("efetuei login no sistema com (.*) e (.*)")
+	public void efetuarLogin(String strUsuario, String strSenha) {
 		LoginPage loginPage = new LoginPage();
-		loginPage.efetuarLogin();
+		loginPage.efetuarLogin(strUsuario, strSenha);
 	}
 
 	@And("acessei o menu Clientes >> Inserir")
@@ -23,10 +23,11 @@ public class ClienteSteps {
 		menusPage.acessarMenuClientesInserir();
 	}
 
-	@When("na tela Dados de Identificacao informo os dados de Pessoa Fisica")
-	public void informarDadosIdentificacaoPF() {
+	@When("na tela Dados de Identificacao informo os dados de Pessoa Fisica: (.*), (.*), (.*), (.*) e (.*)")
+	public void informarDadosIdentificacaoPF(String strNome, String strEmail, String strDataNascimento, String strSexo,
+			String strEstadoCivil) {
 		ClientePage clientePage = new ClientePage();
-		clientePage.InformarDadosIdentificacaoPF();
+		clientePage.InformarDadosIdentificacaoPF(strNome, strEmail, strDataNascimento, strSexo, strEstadoCivil);
 		Utils.logPrint("Dados de Identificacao");
 	}
 

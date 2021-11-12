@@ -9,9 +9,9 @@ public class LoginPage extends LoginElementMap{
 	public LoginPage() {
 		PageFactory.initElements(TestRule.getDriver(), this);
 	}
-    public void efetuarLogin () {
-		login.sendKeys("john");
-		senha.sendKeys("john");
+    public void efetuarLogin (String strUsuario, String strSenha) {
+		login.sendKeys(strUsuario);
+		senha.sendKeys(strSenha);
 		btnLogin.click();
 	}
 }
