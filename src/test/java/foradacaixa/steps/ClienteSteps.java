@@ -32,6 +32,13 @@ public class ClienteSteps {
 		Utils.logPrint("Dados de Identificacao");
 	}
 
+	@When("na tela Dados de Identificacao informo os dados de Pessoa Juridica: (.*) e (.*)")
+	public void informarDadosIdentificacaoPF(String strRazaoSocial, String strEmail) {
+		ClientePage clientePage = new ClientePage();
+		clientePage.informarDadosIdentificacaoPJ(strRazaoSocial, strEmail);
+		Utils.logPrint("Dados de Identificacao PJ");
+	}
+
 	@And("na tela Dados de Identificacao clico em Avancar")
 	public void clicarAvancar() {
 		ClientePage clientePage = new ClientePage();
@@ -52,6 +59,18 @@ public class ClienteSteps {
 		Utils.logPrint("Cliente Cadastrado");
 	}
 
+	@Then ("a tela de Dados de Identificação deve ser exibida na tela")
+	public void verificarExibicaoTelaDadosIdentificacao(){
+		ClientePage clientePage = new ClientePage();
+		boolean blnExibiuMensagemSucesso = clientePage.verificarExibicaoTelaDadosIdentificacao();
+		if (blnExibiuMensagemSucesso){
+			Utils.logPass("Tela Dados de Identificacao exibida com sucesso");
+		}else {
+			Utils.logFail("Erro ao exibir a tela dados de Identificacao");
+		}
+		Assert.assertTrue("Não exibiu a tela dados de Identificacao", blnExibiuMensagemSucesso);
+	}
+	
 	@Then("na tela Enderecos sera exibida mensagem de sucesso")
 	public void verificarMensagemSucesso() {
 		ClientePage clientePage = new ClientePage();

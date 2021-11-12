@@ -165,6 +165,15 @@ public class Utils {
 
 		// retorna o cnpj gerado
 		return iniciais + primDig + segDig;
+	}
 
+	public static void wait(int intSegundos) {
+		try {
+			synchronized (TestRule.getDriver()) {
+				TestRule.getDriver().wait(intSegundos * 1000);
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

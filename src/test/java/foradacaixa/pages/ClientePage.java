@@ -1,5 +1,6 @@
 package foradacaixa.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
@@ -25,7 +26,6 @@ public class ClientePage extends ClienteElementMap {
 
 		Select cmbEstado_Civil = new Select(estado_civil);
 		cmbEstado_Civil.selectByVisibleText(strEstadoCivil);
-
 	}
 
 	public void clicarAvancar() {
@@ -33,9 +33,7 @@ public class ClientePage extends ClienteElementMap {
 	}
 
 	public void informaEnderecos() {
-
 		// Endereco Principal
-
 		endp_cep.sendKeys("38400762");
 		endp_endereco.sendKeys("Rua Brasia");
 		endp_numero.sendKeys("355");
@@ -47,7 +45,6 @@ public class ClientePage extends ClienteElementMap {
 		endp_celular.sendKeys("54999510456");
 
 		// Endereco Cobrança
-
 		endc_cep.sendKeys("38400762");
 		endc_endereco.sendKeys("Rua Bralia");
 		endc_numero.sendKeys("355");
@@ -57,12 +54,10 @@ public class ClientePage extends ClienteElementMap {
 		cmbEstadoEndCobranca.selectByVisibleText("RS");
 		endc_telefone.sendKeys("54999510456");
 		endc_celular.sendKeys("54999510456");
-
 	}
 
 	public void clicarSalvar() {
 		salvar.click();
-
 	}
 
 	public boolean verificarMensagemSucesso() {
@@ -74,4 +69,20 @@ public class ClientePage extends ClienteElementMap {
 		}
 	}
 
+	public void informarDadosIdentificacaoPJ(String strRazaoSocial, String strEmail) {
+		juridica.click();
+		cpf_cnpj.sendKeys(Utils.gerarCNPJ());
+		nome_razaosocial.sendKeys(strRazaoSocial);
+		email.sendKeys(strEmail);
+	}
+	
+	public boolean verificarExibicaoTelaDadosIdentificacao() {
+        int intQuantidadeItensEncontrados = 
+			TestRule.getDriver().findElements(By.id("cpf_cnpj")).size();
+		if(intQuantidadeItensEncontrados > 0){
+			return true;
+		}else{
+			return false;
+		}
+    }
 }
