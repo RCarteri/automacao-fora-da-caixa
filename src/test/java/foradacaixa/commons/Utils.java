@@ -2,6 +2,8 @@ package foradacaixa.commons;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -12,17 +14,24 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
 public class Utils {
+	public static String formatarNomeLog(String strLog) {
+		LocalDateTime dataHoraAgora = LocalDateTime.now();
+		DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("dd_MM_yy_HH_mm_SS");
+		String strLogFormatado = strLog + "_" + dataHoraAgora.format(formatoDataHora);
+		return strLogFormatado;
+	}
+
 	public static void logPrint(String strLog) {
+		String strLogFormatado = formatarNomeLog(strLog);
 		ExtentTest extentTest = TestRule.getExtentTest();
 		try {
-			efetuarPrintTela(strLog);
+			efetuarPrintTela(strLogFormatado);
 			extentTest.log(Status.INFO, strLog,
 					MediaEntityBuilder
 							.createScreenCaptureFromPath(
-									System.getProperty("user.dir") + "/src/test/resources/report/" + strLog + ".png")
+									System.getProperty("user.dir") + "/src/test/resources/report/" + strLogFormatado + ".png")
 							.build());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -46,7 +55,7 @@ public class Utils {
 		ExtentTest extentTest = TestRule.getExtentTest();
 		extentTest.log(Status.FAIL, strMensagem);
 	}
-	
+
 	public static String gerarCPF() {
 		String iniciais = "";// contém os 9 primeiros números do cpf
 		int numero;// número gerado randomicamente

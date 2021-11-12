@@ -19,7 +19,7 @@ public class ClientePage extends ClienteElementMap {
 		cpf_cnpj.sendKeys(Utils.gerarCPF());
 		nome_razaosocial.sendKeys(strNome);
 		email.sendKeys(strEmail);
-		data_nascimento.sendKeys(strDataNascimento);
+		data_nascimento.sendKeys(strDataNascimento.replace("/", ""));
 
 		Select cmbSexo = new Select(sexo);
 		cmbSexo.selectByVisibleText(strSexo);
@@ -75,14 +75,13 @@ public class ClientePage extends ClienteElementMap {
 		nome_razaosocial.sendKeys(strRazaoSocial);
 		email.sendKeys(strEmail);
 	}
-	
+
 	public boolean verificarExibicaoTelaDadosIdentificacao() {
-        int intQuantidadeItensEncontrados = 
-			TestRule.getDriver().findElements(By.id("cpf_cnpj")).size();
-		if(intQuantidadeItensEncontrados > 0){
+		int intQuantidadeItensEncontrados = TestRule.getDriver().findElements(By.id("cpf_cnpj")).size();
+		if (intQuantidadeItensEncontrados > 0) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
-    }
+	}
 }
